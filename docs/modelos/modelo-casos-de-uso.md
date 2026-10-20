@@ -223,19 +223,29 @@ Los apartados 6.1 y 6.2 corresponden a las descripciones detalladas de UC-05 y U
 
 ### 6.1 Descripción detallada UC-05 — Actualizar perfil
 
-**Identificador y nombre del caso de uso:** [Indica el caso.]
+**Identificador y nombre del caso de uso:** UC-05 · Actualizar perfil
 
 **Objetivo:** [Explica qué resultado pretende obtener el participante.]
 
-**Participantes:** [Indica el actor principal y los actores de apoyo, si los hay.]
+**Participantes:** Principal: Usuario Registrado; No hay actores de apoyo
 
-**Precondiciones:** [Indica qué se da por cumplido al comenzar. Las comprobaciones que realiza el sistema pertenecen al flujo.]
+**Precondiciones:** El usuario tiene un cuenta activa y además ha iniciado sesión.
 
-**Inicio:** [Indica qué acción o suceso inicia el caso.]
+**Inicio:** El usuario solicita que quiere actualizar su perfil.
 
-**Escenario principal de éxito:** [Describe la secuencia entre los participantes y el sistema.]
+**Escenario principal de éxito:** 
+| Solución | Trazabilidad |
+| --- | --- |
+| 1. El usuario solicita actualizar su perfil.| Acta UC-05, §1. «La persona quiere actualizar su propio perfil y conservar los cambios.» Deducción. Se adopta la solicitud como primera interacción.|
+|2. El sistema presenta los datos actuales y distingue los valores editables de los que permanecen fijos. | Acta UC-05, §2, Datos que se pueden modificar. «La persona puede consultar los valores guardados antes de modificarlos.» «El alias y el correo electrónico se muestran como datos de consulta. No se pueden modificar, conforme a FR-019.» Deducción. Se reúnen ambas reglas en una presentación que distingue valores editables y fijos; no se prescribe una pantalla concreta. | 
+| 3. El usuario modifica los valores permitidos. |  Catálogo, FR-019. «El sistema debe permitir a los usuarios editar su información personal y preferencias desde su perfil» Acta UC-05, §2, Datos que se pueden modificar. «Para esta descripción se consideran el nombre completo, el teléfono, la dirección postal y las preferencias dietéticas.» |
+| 4. El usuario solicita guardar los cambios.| Acta UC-05, §2, Guardado y cancelación. «La edición no cambia por sí sola los datos guardados. La persona debe solicitar el guardado.» |
+| 5. El sistema comprueba los datos según las reglas del acta.| Acta UC-05, §2, Validación de los cambios. «El nombre completo y el teléfono no pueden quedar vacíos.» «El teléfono conserva las reglas de formato del registro, incluidos los prefijos internacionales.» Deducción. Se agrupan las comprobaciones en un paso anterior al guardado. |
+| 6. El sistema guarda conjuntamente los cambios en el perfil. | Acta UC-05, §2, Guardado y cancelación. «Cuando los datos son válidos, el sistema guarda conjuntamente los cambios y confirma que el perfil se ha actualizado.» |
+| 7. El sistema confirma la actualización. | Acta UC-05, §2, Guardado y cancelación. «confirma que el perfil se ha actualizado.» |
 
-**Extensiones (flujos alternativos):** [Vincula cada variación a un paso. Indica cómo continúa o termina.]
+
+**Extensiones (flujos alternativos):** 
 
 **Postcondiciones:** [Indica qué queda establecido con éxito y qué se conserva o cambia si el caso termina sin éxito o se cancela. Una consulta no requiere modificar datos para alcanzar su objetivo.]
 
@@ -245,17 +255,27 @@ Los apartados 6.1 y 6.2 corresponden a las descripciones detalladas de UC-05 y U
 
 ### 6.2 Descripción detallada UC-21 — Buscar recetas
 
-**Identificador y nombre del caso de uso:** [Indica el caso.]
+**Identificador y nombre del caso de uso:** UC-21 · Buscar recetas
 
-**Objetivo:** [Explica qué resultado pretende obtener el participante.]
+**Objetivo:** Permitir a la persona usuaria localizada encontrar recetas que cumplan de forma estricta con sus criterios de búsqueda (texto libre, inclusión y exclusión de ingredientes) y consultar la información detallada de cualquiera de las recetas resultantes.
 
-**Participantes:** [Indica el actor principal y los actores de apoyo, si los hay.]
+**Participantes:** Principal: Usuario registrado; No hay actores de apoyo
 
-**Precondiciones:** [Indica qué se da por cumplido al comenzar. Las comprobaciones que realiza el sistema pertenecen al flujo.]
+**Precondiciones:** 1.La persona usuaria dispone de una cuenta y ha iniciado sesión en la aplicación. 2.Existen recetas registradas en el sistema en estado «Publicada y validada»
 
-**Inicio:** [Indica qué acción o suceso inicia el caso.]
+**Inicio:** La persona usuaria accede a la interfaz de búsqueda, indica al menos un criterio (texto, ingrediente a incluir o ingrediente a excluir) y solicita ejecutar la búsqueda.
 
-**Escenario principal de éxito:** [Describe la secuencia entre los participantes y el sistema.]
+**Escenario principal de éxito:**  
+| Solución | Trazabilidad |
+| --- | --- |
+| 1. La persona usuaria selecciona ingredientes a incluir, ingredientes a excluir y/o introduce una palabra o frase de texto libre, y solicita la búsqueda | |
+| 2. El sistema comprueba que no exista ningún ingrediente seleccionado simultáneamente en la lista de inclusión y en la de exclusión | |
+| 3. El sistema busca las recetas en estado Publicada y validada que cumplan con la combinación de todos los criterios introducidos | |
+| 4. El sistema muestra los resultados ordenados por fecha de publicación (más recientes primero) indicando título, imagen (o Sin imagen), calificación promedio (o Sin valoraciones) y descripción breve | |
+| 5. La persona usuaria selecciona una receta específica de la lista de resultados para consultar su contenido |  |
+| 6. El sistema muestra la vista detallada de la receta (título, imagen , ingredientes, instrucciones de preparación, tiempo de cocción, número de porciones, alias del autor e insignia de validación) | |
+| 7. La persona usuaria solicita regresar a la lista de resultados de la búsqueda | |
+| 8. El sistema muestra nuevamente la lista de resultados conservando la ordenación y los criterios e ingredientes de la última búsqueda realizada | |
 
 **Extensiones (flujos alternativos):** [Vincula cada variación a un paso. Indica cómo continúa o termina.]
 
